@@ -16,7 +16,7 @@ class TempSpread
 
   private
 
-    def parse(file)
+    def parsed_data
       # Open the file, read it, map the lines by grabbing the first 14 chars
       File.open(file, File::RDONLY){|f| f.read }.lines.map { |line| line[0..13].split }
     end
@@ -30,7 +30,7 @@ class TempSpread
     end
 
     def prepared_data
-      raw_data = parse(file)
+      raw_data = parsed_data
       self.headers = raw_data.shift # stores and gets rid of the header array
       raw_data.shift # gets rid of the empty array
       raw_data
