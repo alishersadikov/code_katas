@@ -15,7 +15,7 @@ class TempSpreadTest < Minitest::Test
   end
 
   def test_single_day_spreads
-    obj.calculate_max_spread # to populate everything
+    obj.calculate_min_spread # to populate everything
     refute_equal [], obj.headers
     refute_empty obj.spreads_by_day
 
@@ -23,7 +23,7 @@ class TempSpreadTest < Minitest::Test
     assert_equal 16, obj.spreads_by_day["2"]["Spread"]
   end
 
-  def test_max_spread
-    assert_equal '9', obj.calculate_max_spread
+  def test_min_spread
+    assert_equal '14', obj.calculate_min_spread
   end
 end

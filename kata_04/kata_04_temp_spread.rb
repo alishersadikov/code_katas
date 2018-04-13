@@ -8,10 +8,10 @@ class TempSpread
     @spreads_by_day ||= {}
   end
 
-  def calculate_max_spread
+  def calculate_min_spread
     calculate_spreads # populate the spreads
-    # sorts by the spread ascending, gets the last element, spits out the day
-    spreads_by_day.sort_by { |day| day[1]["Spread"] }.last.first
+    # sorts by the spread ascending, gets the first element, spits out the day
+    spreads_by_day.sort_by { |day| day[1]["Spread"] }.first.first
   end
 
   private
