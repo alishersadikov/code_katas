@@ -9,14 +9,14 @@ class TempSpreadTest < Minitest::Test
   end
 
   def test_initial_state_of_attributes
-    assert obj.file
-    assert_equal [], obj.headers
-    assert obj.spreads_by_day == {}
+    assert obj.loaded_file
+    assert_empty obj.headers
+    assert_empty obj.spreads_by_day
   end
 
   def test_single_day_spreads
-    obj.calculate_min_spread # to populate everything
-    refute_equal [], obj.headers
+    obj.determine_min_spread_day # to populate everything
+    refute_empty obj.headers
     refute_empty obj.spreads_by_day
 
     assert_equal 29, obj.spreads_by_day["1"]["Spread"]
@@ -24,6 +24,6 @@ class TempSpreadTest < Minitest::Test
   end
 
   def test_min_spread
-    assert_equal '14', obj.calculate_min_spread
+    assert_equal '14', obj.determine_min_spread_day
   end
 end
